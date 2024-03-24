@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}
+LOGIN
+{% endblock title %}
+{% block body %}
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 jumbotron">
+            <h4 class = "text-center bg-success text-white">Login</h4>
+            <br>
+
+          <!-- copied -->
+          <!-- For flashing the messages -->
+
+            {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+              {{message}}
+          
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+
+          <!-- copied -->
+
+            <form action = "/login" method =  "POST">
+    
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name = "email" required>
+                  </div>
+    
+                <div class="from-group mb-3">
+                  <label for = "password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name = "password" required>
+                </div>
+                <!-- <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> -->
+                <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
+            </form>
+            <br>
+            Not a User <a href="/signup">Signup</a>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    </div>
+
+{% endblock body %}
